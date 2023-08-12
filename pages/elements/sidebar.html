@@ -1,0 +1,47 @@
+<!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <p class="brand-link">
+      <img src="{{ url_for('static', filename='dist/img/tools.svg') }}" alt="logo" class="brand-image" style="opacity: .8">
+      <span class="brand-text font-weight-bold" style="color: aqua;">Pritish Purav</span>
+    </p>
+
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+
+      
+
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/home" class="nav-link {% if request.path == '/home' %}active{% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+
+
+            <li class="nav-item">
+              <a href="/tools" class="nav-link {% if request.path == '/tools' %}active{% endif %}">
+                <i class="nav-icon fas fa-robot"></i>
+                <p>
+                  Tools
+                </p>
+              </a>
+  
+        </ul>
+        </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
