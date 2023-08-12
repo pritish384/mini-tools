@@ -8,4 +8,3 @@ def get_video_download_url(url):
         return video.url
     except Exception as e:
         return print(e)
-

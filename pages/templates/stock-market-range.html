@@ -63,7 +63,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form method="post">
+      <form method="post" onsubmit="handleSubmit()">
         <label>Choose the Index.</label>
         <div class="curved-bar">
             <div name="symbol" class="tab-bar-button-container" id="index-buttons">
@@ -84,17 +84,57 @@
         </div>
 
         <br>
-        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <!-- Hidden input fields to hold the active values -->
+        <input type="hidden" id="activeSymbolInput" name="symbol">
+        <input type="hidden" id="activeTimeInput" name="time">
+        <!-- good submit button -->
+        <button type="submit" class="btn btn-info">Submit</button>
+
+    </form>
       <script>
-        var symboldiv = document.getElementById("index-buttons");
-        var symbolbtns = symboldiv.getElementsByClassName("tab-bar-button");
+         function handleSubmit() {
+            // Get the active symbol and time period values
+            var activeSymbol = document.querySelector('.tab-bar-button-container[name="symbol"] .tab-bar-button.active').getAttribute('value');
+    
+            // Get the active time value
+            var activeTime = document.querySelector('.tab-bar-button-container[name="time"] .tab-bar-button.active').getAttribute('value');
+
+            // Set the values of hidden input fields in the form
+            document.getElementById('activeSymbolInput').value = activeSymbol;
+            document.getElementById('activeTimeInput').value = activeTime;
+        }
         
       </script>
+
 
     
         <!-- /.row -->
     </section>
+    {% if rangepopup %}
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-box">
+            <h3 class="mb-4">India VIX Volatility Analyzer</h3>
+            <hr>
+            <p class="mb-4">{{ range }}</p>
+            <p class="mb-4 text-danger"><em>The stock market is a volatile market and prices can fluctuate wildly. This prediction is based on India VIX Index, but it is not guaranteed to be accurate.</em></p>
+            <button type="button" class="btn btn-danger" id="understand-btn">I understand</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          var understandBtn = document.getElementById("understand-btn");
+          var popupOverlay = document.getElementById("popup-overlay");
+      
+          if (understandBtn && popupOverlay) {
+              understandBtn.addEventListener("click", function() {
+                  
+                  popupOverlay.style.display = "none";
+              });
+          }
+      });
+      </script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

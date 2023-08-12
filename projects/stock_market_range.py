@@ -20,6 +20,6 @@ def calculate_range(symbol , time):
     percentage = (vix/sqrt(time))
     uncertinity = 0.09/100
     # add percentage and uncertainity
-    max = index_price * (1 + (percentage/100 + uncertinity))
-    min = index_price * (1 - (percentage/100 + uncertinity))
-    return round(max) , round(min)
+    max = round(index_price * (1 + (percentage/100 + uncertinity)))
+    min = round(index_price * (1 - (percentage/100 + uncertinity)))
+    return f"{symbol} is predicted to be within the range of {min} to {max}."

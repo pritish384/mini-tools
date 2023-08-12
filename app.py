@@ -51,8 +51,8 @@ def yt_video_downloader():
         file_name = f"{query}.mp4"
 
 
-        # return Response(response.content, headers={'Content-Disposition': f'attachment; filename={file_name}'})
-        return redirect(download_url)
+        return Response(response.content, headers={'Content-Disposition': f'attachment; filename={file_name}'})
+        # return redirect(download_url)
 
 
     
@@ -80,15 +80,24 @@ def yt_video_downloader_query():
     
     return render_template('templates/yt-video-downloader.html' , videos=video)
 
+
+
+
 @app.route('/tools/stock-market-range' , methods=['GET'])
 def stock_market_range():
     return render_template('templates/stock-market-range.html')
 
+
+
+
 @app.route('/tools/stock-market-range' , methods=['POST'])
 def stock_market_range_query():
-    print(request.form['submit'])
-
-    return render_template('templates/stock-market-range.html')
+    symbol = request.form['symbol']
+    time = int(request.form['time'])
+    ans = calculate_range(symbol , time)
+    
+    
+    return render_template('templates/stock-market-range.html' , range=ans , rangepopup=True)
 
 
 app.run(debug=True , host="0.0.0.0" , port=80)
