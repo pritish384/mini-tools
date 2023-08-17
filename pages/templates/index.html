@@ -7,7 +7,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/baca67d137.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fontawesome-free/css/all.min.css') }}">
   <!-- overlayScrollbars -->
 
   <link rel="stylesheet" href="{{ url_for('static', filename='plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -27,6 +27,8 @@
 
   <!-- Preloader -->
   {% include 'elements/preloader.html' %}
+
+  </div>
 
 
     <!-- Navbar -->
@@ -51,7 +53,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"></h1>
+            <h1 class="m-0">Introduction</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -60,22 +62,23 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Info boxes -->
+      <div class="content px-2">
+        <h2>What is Mini tools?</h2>
+        <p> Mini tools is a collection of tools that can be used to perform various tasks.</p>
         
-
-              
-              <!-- /.info-box-content -->
-            </div>
-
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
+        <h2>How to use it?</h2>
+        <p> To use the tools, you can visit tools section. Then, you can choose the tools that you want to use. </p>
+        <button class="btn btn-light" onclick="tools()">Get Started</button>
+        <script>
+          function tools() {
+            window.location.href = "{{ url_for('tools') }}";
+          }
+        </script>
       </div>
 
-    </div>
+
+
+    </section>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -102,9 +105,6 @@
 <!-- PAGE plugins -->
 <!-- jQuery Mapael -->
 <script src="{{ url_for('static', filename='plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
-<script src="{{ url_for('static', filename='plugins/raphael/raphael.min.js') }}"></script>
-<script src="{{ url_for('static', filename='plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
-<script src="{{ url_for('static', filename='plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
 
 
 
@@ -114,7 +114,6 @@
 
 
 <!-- AdminLTE for demo purposes -->
-
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url_for('static', filename='dist/js/pages/dashboard.js') }}"></script>
 </body>

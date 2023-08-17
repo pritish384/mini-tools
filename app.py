@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
 import requests
-
-from projects.yt_video_downloader import get_video_download_url
-from projects.stock_market_range import calculate_range
+from projects import *
 from db.database_config import *
 import dotenv
 import os
 from pathlib import Path
-import json
-import time
 from googleapiclient.discovery import build
 
 
@@ -42,17 +38,11 @@ def yt_video_downloader():
     query=request.args.get('download')
     if query:
         download_url = f"https://www.youtube.com/watch?v={query}"
-        download_url = get_video_download_url(download_url)
-
         try:
-            response = requests.get(download_url)
+            download_url = get_video_download_url(download_url)
         except:
             return render_template('templates/error.html' , error="Error while downloading the video")
-        file_name = f"{query}.mp4"
-
-
-        return Response(response.content, headers={'Content-Disposition': f'attachment; filename={file_name}'})
-        # return redirect(download_url)
+        return redirect(download_url)
 
 
     
@@ -99,6 +89,5 @@ def stock_market_range_query():
     
     return render_template('templates/stock-market-range.html' , range=ans , rangepopup=True)
 
-
-app.run(debug=True , host="0.0.0.0" , port=80)
-
+if __name__ == '__main__':
+    app.run(debug=True , host="0.0.0.0" , port=80)
