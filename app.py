@@ -59,7 +59,7 @@ def yt_video_downloader_query():
     
 
     yt_api_key = os.getenv('YOUTUBE_API_KEY')
-    yt_api = build('youtube' , 'v3' , developerKey=yt_api_key)
+    yt_api = build('youtube' , 'v3' , developerKey=yt_api_key ,static_discovery=False)
     search_response = yt_api.search().list(
         part='snippet',
         q=query,
