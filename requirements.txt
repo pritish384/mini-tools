@@ -1,8 +1,7 @@
-beautifulsoup4==4.12.2
-bs4==0.0.1
-Flask==2.3.2
-pymongo==4.4.1
-python-dotenv==1.0.0
-pytube==15.0.0
-requests==2.31.0
-google-api-python-client==2.97.0
+bs4
+Flask
+pymongo
+python-dotenv
+pytube
+requests
+google-api-python-client
