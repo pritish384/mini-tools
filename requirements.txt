@@ -5,3 +5,4 @@ python-dotenv
 pytube
 requests
 google-api-python-client
+waitress
