@@ -1,0 +1,8 @@
+bs4
+Flask
+pymongo
+python-dotenv
+pytube
+requests
+google-api-python-client
+waitress
