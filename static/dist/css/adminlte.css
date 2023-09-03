@@ -53332,7 +53332,6 @@ input::-webkit-inner-spin-button {
 
 .disable-css {
   all: unset;
-  /* Add any specific styles you want to override */
 }
 .rounded-image {
     border-radius: 5%;
@@ -53374,6 +53373,12 @@ aside{
   border-radius: 10px;
 
 }
+@media (max-width: 767px) {
+  .card-img{
+    max-width: 100%;
+  }
+}
+
 .card .card-body {
   display: flex;
   align-items: center;
